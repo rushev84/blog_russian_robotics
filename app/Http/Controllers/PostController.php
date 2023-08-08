@@ -22,8 +22,15 @@ class PostController extends Controller
         ));
     }
 
-    public function single()
+    public function single($category_id, $post_slug)
     {
-        return view('post.single');
+        $post = Post::where('slug', $post_slug)->first();
+
+        $categories = Category::all();
+
+        return view('post.single', compact(
+            'post',
+            'categories',
+        ));
     }
 }
