@@ -10,11 +10,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::paginate(8);
+        $randomPosts = Post::inRandomOrder()->limit(3)->get();
 
-//        dd($posts);
-
-        return view('post.index', [
-            'posts' => $posts,
-        ]);
+        return view('post.index', compact('posts', 'randomPosts'));
     }
 }
