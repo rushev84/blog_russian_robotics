@@ -24,8 +24,6 @@
 
         @yield('content')
 
-
-
     @include('includes.footer')
     @include('includes.loader')
 

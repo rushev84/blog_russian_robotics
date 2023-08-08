@@ -18,8 +18,8 @@ class Category extends Model
         'created_at', 'updated_at',
     ];
 
-    public function articles()
+    public function posts()
     {
-        $this->hasMany(Post::class);
+        return $this->hasMany(Post::class);
     }
 }

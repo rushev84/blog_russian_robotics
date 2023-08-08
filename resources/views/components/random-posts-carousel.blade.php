@@ -1,5 +1,7 @@
 <section class="site-section pt-5">
-    <div class="container">
+
+    @component('components.container')
+
         <div class="row">
             <div class="col-md-12">
                 <div class="owl-carousel owl-theme home-slider">
@@ -21,5 +23,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
+    @endcomponent
+
 </section>
