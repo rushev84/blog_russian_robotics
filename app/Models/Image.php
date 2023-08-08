@@ -20,6 +20,6 @@ class Image extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Post::class, 'post_image');
     }
 }
