@@ -22,7 +22,7 @@ class PostController extends Controller
         ));
     }
 
-    public function single($category_id, $post_slug)
+    public function single($category_slug, $post_slug)
     {
         $post = Post::where('slug', $post_slug)->first();
 
