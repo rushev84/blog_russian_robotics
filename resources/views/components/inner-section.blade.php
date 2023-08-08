@@ -12,6 +12,8 @@
                     <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
                 </div>
                 <div class="post-content-body">
+                    <img src="{{ asset('storage/images/' . ($post->images->first()->url ?? 'default.jpg')) }}" alt="{{ $post->images->first()->description ?? 'default description' }}">
+                    <br><br>
                     {{ $post->content }}
                 </div>
 
@@ -21,8 +23,6 @@
                 </div>
 
             </div>
-
-            <!-- END main-content -->
 
             @component('components.sidebar', [
                 'categories' => $categories,

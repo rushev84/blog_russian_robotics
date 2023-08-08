@@ -13,8 +13,8 @@
                 <div class="row">
                     @foreach ($posts as $post)
                         <div class="col-md-6">
-                            <a href="blog-single.html" class="blog-entry element-animate" data-animate-effect="fadeIn">
-                                <img src="storage/images/{{ $post->images->first()->url ?? 'default.jpg' }}" alt="{{ $post->images->first()->description ?? 'default description' }}">
+                            <a href="{{ route('post.single', [$post->category->name, $post->slug]) }}" class="blog-entry element-animate" data-animate-effect="fadeIn">
+                                <img src="{{ asset('storage/images/' . ($post->images->first()->url ?? 'default.jpg')) }}" alt="{{ $post->images->first()->description ?? 'default description' }}">
                                 <div class="blog-content-body">
                                     <div class="post-meta">
                                         <span class="category">{{ $post->category->name }}</span>
