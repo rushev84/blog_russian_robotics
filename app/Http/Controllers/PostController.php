@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Support\Facades\Route;
 
 class PostController extends Controller
 {
@@ -16,6 +17,8 @@ class PostController extends Controller
 
     public function index()
     {
+//        dd(Route::is('post.index'));
+
         return view('post.index', [
             'posts' => Post::paginate(8),
             'randomPosts' => Post::inRandomOrder()->limit(3)->get(),
