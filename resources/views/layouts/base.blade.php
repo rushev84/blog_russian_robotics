@@ -17,6 +17,8 @@
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -36,6 +38,8 @@
     <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
 
     <script src="{{ asset('js/main.js') }}"></script>
+
+    @stack('js-contacts')
 
 </body>
 </html>
