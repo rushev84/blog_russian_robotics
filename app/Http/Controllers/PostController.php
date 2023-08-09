@@ -33,4 +33,16 @@ class PostController extends Controller
             'categories',
         ));
     }
+
+    public function category($category_slug)
+    {
+        $posts = Post::paginate(8);
+
+        $categories = Category::all();
+
+        return view('post.category', compact(
+            'posts',
+            'categories',
+        ));
+    }
 }
