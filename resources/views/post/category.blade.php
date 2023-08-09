@@ -5,7 +5,7 @@
     @component('components.inner-section')
 
         @component('components.title', [
-            'title' => 'Category: Food',
+            'title' => 'Category: '. $category->name,
             ])
         @endcomponent
 
@@ -17,19 +17,21 @@
 
                     <div class="col-md-12">
 
-                        <div class="post-entry-horzontal">
-                            <a href="#">
-                                <div class="image element-animate" data-animate-effect="fadeIn" style="background-image: url(images/img_10.jpg);"></div>
-                                <span class="text">
-                                    <div class="post-meta">
-                                        <span class="category">Travel</span>
-                                        <span class="mr-2">March 15, 2018 </span> &bullet;
-                                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                    </div>
-                                    <h2>There’s a Cool New Way for Men to Wear Socks and Sandals</h2>
-                                </span>
-                            </a>
-                        </div>
+                        @foreach ($posts as $post)
+                            <div class="post-entry-horzontal">
+                                <a href="#">
+                                    <div class="image element-animate" data-animate-effect="fadeIn" style="background-image: url({{ asset('storage/images/' . ($post->images->first()->url ?? 'default.jpg')) }});"></div>
+                                    <span class="text">
+                                        <div class="post-meta">
+                                            <span class="category">{{ $post->category->name }}</span>
+                                            <span class="mr-2">{{ $post->created_at->format('F d, Y') }} </span> &bullet;
+                                            <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                                        </div>
+                                        <h2>{{ $post->title }}</h2>
+                                    </span>
+                                </a>
+                            </div>
+                        @endforeach
 
                     </div>
                 </div>

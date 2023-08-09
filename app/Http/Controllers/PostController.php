@@ -4,45 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    protected $categories;
+
+    public function __construct()
+    {
+        $this->categories = Category::all();
+    }
+
     public function index()
     {
-        $posts = Post::paginate(8);
-        $randomPosts = Post::inRandomOrder()->limit(3)->get();
-
-        $categories = Category::all();
-
-        return view('post.index', compact(
-            'posts',
-            'randomPosts',
-            'categories',
-        ));
+        return view('post.index', [
+            'posts' => Post::paginate(8),
+            'randomPosts' => Post::inRandomOrder()->limit(3)->get(),
+            'categories' => $this->categories,
+        ]);
     }
 
     public function single($category_slug, $post_slug)
     {
-        $post = Post::where('slug', $post_slug)->first();
-
-        $categories = Category::all();
-
-        return view('post.single', compact(
-            'post',
-            'categories',
-        ));
+        return view('post.single', [
+            'post' => Post::where('slug', $post_slug)->first(),
+            'categories' => $this->categories,
+        ]);
     }
 
     public function category($category_slug)
     {
-        $posts = Post::paginate(8);
+        $category = Category::where('slug', $category_slug)->first();
 
-        $categories = Category::all();
-
-        return view('post.category', compact(
-            'posts',
-            'categories',
-        ));
+        return view('post.category', [
+            'category' => $category,
+            'posts' => $category->posts()->paginate(8),
+            'categories' => $this->categories,
+        ]);
     }
 }
