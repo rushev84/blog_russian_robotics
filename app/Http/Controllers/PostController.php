@@ -17,8 +17,6 @@ class PostController extends Controller
 
     public function index()
     {
-//        dd(Route::is('post.index'));
-
         return view('post.index', [
             'posts' => Post::paginate(8),
             'randomPosts' => Post::inRandomOrder()->limit(3)->get(),
