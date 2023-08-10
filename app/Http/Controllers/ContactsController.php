@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\NewMessageNotification;
-use App\Mail\CustomerMail;
+use App\Mail\ContactMail;
 use App\Models\Category;
 use App\Models\Message;
 use Illuminate\Http\Request;
@@ -22,34 +21,33 @@ class ContactsController extends Controller
 
     public function create_message(Request $request)
     {
+        $name = $request->input('name');
+        $phone = $request->input('phone');
+        $email = $request->input('email');
+        $content = $request->input('content');
+
+        // Сохранение сообщения в БД
+
         $message = new Message;
-        $message->name = $request->input('name');
-        $message->phone = $request->input('phone');
-        $message->email = $request->input('email');
-        $message->content = $request->input('content');
+        $message->name = $name;
+        $message->phone = $phone;
+        $message->email = $email;
+        $message->content = $content;
         $message->save();
 
+        // Отправка письма на почту
 
-        // Отправка уведомления на почту
-        $recipientEmail = 'rushev84@yandex.ru';
-        $notification = new NewMessageNotification();
-        \Illuminate\Support\Facades\Notification::route('mail', $recipientEmail)
-            ->notify($notification);
+        $data = [
+            'name' => $name,
+            'phone' => $phone,
+            'email' => $email,
+            'content' => $content,
+        ];
+
+        Mail::to('admin@balita.com')->send(new ContactMail($data));
 
         return response()
             ->json(['success' => true,])
             ->header('Content-Type', 'application/json');
-    }
-
-    public function contact()
-    {
-        $data = [
-            'subject' => 'test subject',
-            'body' => 'test body',
-        ];
-
-        Mail::to('hello@example.com')->send(new CustomerMail($data));
-
-        return 'Email sent';
     }
 }
