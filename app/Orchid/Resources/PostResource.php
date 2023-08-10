@@ -40,8 +40,7 @@ class PostResource extends Resource
 
             Select::make('category_id')
                 ->title('Category')
-                ->fromModel(Category::class, 'name') // Используем имя "categoryName" (имя accessor'а)
-                ->titleKey('name'),
+                ->fromModel(Category::class, 'name'),
 
             Input::make('slug')
                 ->title('Slug')
