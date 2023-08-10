@@ -41,6 +41,17 @@
                     </div>
                 </form>
 
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Сообщение успешно отправлено!</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             @endcomponent
 
             @component('components.sidebar', [
@@ -77,9 +88,7 @@
             },
             success: function(response) {
                 // Обработка успешного ответа от сервера
-                // ...
-                console.log(response)
-
+                $("#myModal").modal('show');
             },
             error: function(xhr, status, error) {
                 // Обработка ошибки
