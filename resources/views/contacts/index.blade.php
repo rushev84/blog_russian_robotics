@@ -36,7 +36,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <input type="submit" value="Send Message" class="btn btn-primary">
+                            <input id="send_message" type="submit" value="Send Message" class="btn btn-primary">
                         </div>
                     </div>
                 </form>
@@ -45,7 +45,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Сообщение успешно отправлено!</h4>
+                                <h4 class="modal-title">Message has been sent successfully!</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                         </div>
@@ -75,6 +75,11 @@
         let email = $('#email').val();
         let content = $('#content').val();
 
+        const button = document.getElementById("send_message");
+        button.value = "Sending message...";
+        button.classList.remove("btn-primary");
+        button.classList.add("btn-secondary");
+
         // Выполняем AJAX-запрос для создания новой записи в базе данных
         $.ajax({
             url: '/contacts/create_message',
@@ -89,6 +94,10 @@
             success: function(response) {
                 // Обработка успешного ответа от сервера
                 $("#myModal").modal('show');
+
+                button.value = "Send Message";
+                button.classList.add("btn-primary");
+                button.classList.remove("btn-secondary");
             },
             error: function(xhr, status, error) {
                 // Обработка ошибки
