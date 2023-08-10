@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Queue\SerializesModels;
 
 class NewMessageNotification extends Mailable
@@ -51,5 +52,28 @@ class NewMessageNotification extends Mailable
     public function attachments(): array
     {
         return [];
+    }
+
+//    public function toMail($notifiable)
+//    {
+//        return (new MailMessage)
+//            ->subject('New Message Notification')
+//            ->markdown('emails.new_message_notification', [
+//                'name' => $this->message->name,
+//                'content' => $this->message->content,
+//            ]);
+//    }
+
+    public function toMail($notifiable)
+    {
+        return (new MailMessage)
+            ->subject('New Message Notification')
+            ->markdown('emails.new_message_notification');
+    }
+
+    // Определение метода via() для отправки уведомления по электронной почте
+    public function via($notifiable)
+    {
+        return ['mail']; // Используем только канал email
     }
 }

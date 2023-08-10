@@ -11,3 +11,5 @@ Route::get('/posts/{category_slug}/{post_slug}', [PostController::class, 'single
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts.index');
 Route::post('/contacts/create_message', [ContactsController::class, 'create_message'])->name('contacts.create_message');
 
+
+Route::get('/mail_test', [ContactsController::class, 'contact']);
