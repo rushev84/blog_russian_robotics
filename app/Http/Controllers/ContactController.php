@@ -8,7 +8,7 @@ use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
-class ContactsController extends Controller
+class ContactController extends Controller
 {
     public function index()
     {
