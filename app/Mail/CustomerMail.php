@@ -30,7 +30,7 @@ class CustomerMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('codersbase@gmail.com'),
+            from: new Address('balita@balita.com'),
             subject: $this->data['subject'],
         );
     }
