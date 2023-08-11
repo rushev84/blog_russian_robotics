@@ -2,6 +2,8 @@
 
 namespace App\Orchid\Screens;
 
+use Orchid\Screen\Actions\Button;
+use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Screen;
 
 class UploadDataScreen extends Screen
@@ -43,6 +45,13 @@ class UploadDataScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            Layout::view('orchid.upload-data'),
+        ];
+    }
+
+    public function handleButtonClick()
+    {
+
     }
 }
