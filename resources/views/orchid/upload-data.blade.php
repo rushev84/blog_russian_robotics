@@ -1,9 +1,13 @@
 <div class="bg-white rounded-top shadow-sm mb-4 rounded-bottom">
     <div class="row g-0">
         <div class="col col-lg-7 mt-6 p-4">
-            <div class="input-group">
-                <input type="file" class="form-control" id="choose_xml" aria-describedby="fileHelp">
-            </div>
+            <form action="/upload-xml" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="input-group">
+                    <input type="file" class="form-control" id="choose_xml" name="choose_xml" aria-describedby="fileHelp">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
