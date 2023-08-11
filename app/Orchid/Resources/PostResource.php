@@ -56,18 +56,24 @@ class PostResource extends Resource
     public function columns(): array
     {
         return [
-            TD::make('id'),
-            TD::make('title'),
+            TD::make('id')
+                ->width('60px'),
+            TD::make('title')
+                ->width('250px'),
+            TD::make('description')
+                ->width('400px'),
 
-            TD::make('created_at', 'Date of creation')
-                ->render(function ($model) {
-                    return $model->created_at->toDateTimeString();
-                }),
-
-            TD::make('updated_at', 'Update date')
-                ->render(function ($model) {
-                    return $model->updated_at->toDateTimeString();
-                }),
+//            TD::make('created_at', 'Date of creation')
+//                ->render(function ($model) {
+//                    return $model->created_at->toDateTimeString();
+//                })
+//                ->width('100px'),
+//
+//            TD::make('updated_at', 'Update date')
+//                ->render(function ($model) {
+//                    return $model->updated_at->toDateTimeString();
+//                })
+//                ->width('100px'),
         ];
     }
 

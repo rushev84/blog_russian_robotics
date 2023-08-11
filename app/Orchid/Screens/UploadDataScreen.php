@@ -23,7 +23,7 @@ class UploadDataScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'UploadDataScreen';
+        return 'Upload data';
     }
 
     /**
