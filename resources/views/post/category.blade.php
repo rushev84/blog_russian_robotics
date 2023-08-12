@@ -18,7 +18,7 @@
                         @foreach ($posts as $post)
                             <div class="post-entry-horzontal">
                                 <a href="{{ route('post.single', [$post->category->name, $post->slug]) }}">
-                                    <div class="image element-animate" data-animate-effect="fadeIn" style="background-image: url({{ asset('storage/images/' . ($post->images->first()->url ?? 'default.jpg')) }});"></div>
+                                    <div class="image element-animate" data-animate-effect="fadeIn" style="background-image: url({{ asset($post->images->first()->url ?? '/storage/images/default.jpg') }});"></div>
                                     <span class="text">
                                         <div class="post-meta">
                                             <span class="category">{{ $post->category->name }}</span>

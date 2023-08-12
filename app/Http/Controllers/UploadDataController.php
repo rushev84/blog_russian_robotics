@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Post;
+use App\Models\PostImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use SimpleXMLElement;
@@ -37,17 +39,46 @@ class UploadDataController extends Controller
                     'slug' => $categorySlug,
                 ]);
                 foreach ($item->Category->Elements->children() as $element) {
-                    $postTitle = (string) $element->Name;
+
+                    $postTitle = '';
+                    $postDescription = '';
+                    $images = [];
+
+                    foreach ($element as $key => $value) {
+                        if($key === 'Name') {
+                            $postTitle = (string) $value;
+                            continue;
+                        }
+
+                        if($key === 'Description') {
+                            $postDescription = (string) $value;
+                            continue;
+                        }
+
+                        $images[] = $value;
+                    }
+
                     $postSlug = Str::slug($postTitle);
 
-                    Post::create([
+                    $post = Post::create([
                         'title' => $postTitle,
-                        'description' => $element->Description,
+                        'description' => $postDescription,
                         'slug' => $postSlug,
                         'category_id' => $category->id,
-//                        'pict1' => (string) $element->Pict1,
-//                        'pict2' => (string) $element->Pict2,
                     ]);
+
+                    foreach ($images as $image) {
+                        $image = Image::create([
+                            'url' => (string) $image,
+                        ]);
+                        PostImage::create([
+                            'post_id' => $post->id,
+                            'image_id' => $image->id,
+                        ]);
+
+                    }
+
+
                 }
             }
         }
