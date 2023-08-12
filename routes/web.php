@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UploadDataController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PostController::class, 'index'])->name('post.index');
@@ -10,3 +11,5 @@ Route::get('/posts/{category_slug}/{post_slug}', [PostController::class, 'single
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contacts.index');
 Route::post('/contacts/create_message', [ContactController::class, 'create_message'])->name('contacts.create_message');
+
+Route::get('/upload_data', [UploadDataController::class, 'uploadData'])->name('upload_data');
