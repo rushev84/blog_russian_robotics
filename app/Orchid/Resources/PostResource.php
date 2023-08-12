@@ -31,12 +31,12 @@ class PostResource extends Resource
                 ->title('Title')
                 ->placeholder('Enter title here'),
 
-            Input::make('description')
-                ->title('Description')
-                ->placeholder('Enter description here'),
+//            Input::make('description')
+//                ->title('Description')
+//                ->placeholder('Enter description here'),
 
-            TextArea::make('content')
-                ->rows(15),
+            TextArea::make('description')
+                ->rows(20),
 
             Select::make('category_id')
                 ->title('Category')
@@ -57,11 +57,11 @@ class PostResource extends Resource
     {
         return [
             TD::make('id')
-                ->width('60px'),
+                ->width('100px'),
             TD::make('title')
-                ->width('250px'),
-            TD::make('description')
-                ->width('400px'),
+                ->width('800px'),
+//            TD::make('description')
+//                ->width('600px'),
 
 //            TD::make('created_at', 'Date of creation')
 //                ->render(function ($model) {
