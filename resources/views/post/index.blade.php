@@ -22,7 +22,7 @@
                     @foreach ($posts as $post)
                         <div class="col-md-6">
                             <a href="{{ route('post.single', [$post->category->slug, $post->slug]) }}" class="blog-entry element-animate" data-animate-effect="fadeIn">
-                                <img src="{{ asset('storage/images/' . ($post->images->first()->url ?? 'default.jpg')) }}" alt="{{ $post->images->first()->description ?? 'default description' }}">
+                                <img src="{{ asset($post->images->first()->url ?? '/storage/images/default.jpg') }}" alt="{{ $post->images->first()->description ?? 'default description' }}">
                                 <div class="blog-content-body">
                                     <div class="post-meta">
                                         <span class="category">{{ $post->category->name }}</span>

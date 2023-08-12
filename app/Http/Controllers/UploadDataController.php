@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use SimpleXMLElement;
 
 class UploadDataController extends Controller
@@ -28,15 +29,21 @@ class UploadDataController extends Controller
 
         foreach ($xml->children() as $item) {
             if (isset($item->Category->Elements)) {
+                $categoryName = (string) $item->Category->Name;
+                $categorySlug = Str::slug($categoryName);
+
                 $category = Category::create([
-                    'name' => $item->Category->Name,
-                    'slug' => 'category_slug', // TODO!!
+                    'name' => $categoryName,
+                    'slug' => $categorySlug,
                 ]);
                 foreach ($item->Category->Elements->children() as $element) {
+                    $postTitle = (string) $element->Name;
+                    $postSlug = Str::slug($postTitle);
+
                     Post::create([
-                        'title' => $element->Name,
+                        'title' => $postTitle,
                         'description' => $element->Description,
-                        'slug' => 'post_slug', // TODO!!
+                        'slug' => $postSlug,
                         'category_id' => $category->id,
 //                        'pict1' => (string) $element->Pict1,
 //                        'pict2' => (string) $element->Pict2,

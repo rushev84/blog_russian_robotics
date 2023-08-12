@@ -4,7 +4,7 @@
             <div class="owl-carousel owl-theme home-slider">
                 @foreach ($randomPosts as $randomPost)
                     <div>
-                        <a href="{{ route('post.single', [$randomPost->category->name, $randomPost->slug]) }}" class="a-block d-flex align-items-center height-lg" style="background-image: url('storage/images/{{ $randomPost->images->first()->url ?? 'default.jpg' }}'); ">
+                        <a href="{{ route('post.single', [$randomPost->category->slug, $randomPost->slug]) }}" class="a-block d-flex align-items-center height-lg" style="background-image: url('storage/images/{{ $randomPost->images->first()->url ?? 'default.jpg' }}'); ">
                             <div class="text half-to-full">
                                 <div class="post-meta">
                                     <span class="category">{{ $randomPost->category->name }}</span>
