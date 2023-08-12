@@ -17,7 +17,7 @@
                 <div class="post-content-body">
                     <img src="{{ asset('storage/images/' . ($post->images->first()->url ?? 'default.jpg')) }}" alt="{{ $post->images->first()->description ?? 'default description' }}">
                     <br><br>
-                    {{ $post->content }}
+                    {{ $post->description }}
                 </div>
 
 

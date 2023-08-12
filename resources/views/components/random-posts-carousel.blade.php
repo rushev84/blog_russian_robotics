@@ -12,7 +12,7 @@
                                     <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
                                 </div>
                                 <h3>{{ $randomPost->title }}</h3>
-                                <p>{{ $randomPost->description }}</p>
+{{--                                <p>{{ $randomPost->description }}</p>--}}
                             </div>
                         </a>
                     </div>
