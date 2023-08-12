@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Bmatovu\LaravelXml\Support\Facades\LaravelXml as Xml;
 
 class UploadDataController extends Controller
 {
@@ -17,7 +18,10 @@ class UploadDataController extends Controller
 
         $xmlPath = storage_path('app/upload/uploaded.xml');
 
-        dd($xmlPath);
+        $xmlContent = file_get_contents($xmlPath);
+//        $xmlContent->xml();
+
+        dd($xmlContent);
 //                $xml = simplexml_load_file($xmlPath);
 
         return response()
