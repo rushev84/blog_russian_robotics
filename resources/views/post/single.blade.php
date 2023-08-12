@@ -15,11 +15,16 @@
                     <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
                 </div>
                 <div class="post-content-body">
-                    <img src="{{ asset($post->images->first()->url ?? '/storage/images/default.jpg') }}" alt="{{ $post->images->first()->description ?? 'default description' }}">
-                    <br><br>
+                    <div class="row mb-5">
+                        @foreach ($post->images as $image)
+                            <div class="col-md-12 mb-4 element-animate">
+                                <img src="{{ $image->url }}" alt="{{ $image->description }}" class="img-fluid">
+                            </div>
+
+                        @endforeach
+                    </div>
                     {{ $post->description }}
                 </div>
-
 
                 <div class="pt-5">
                     <p>Category:  <a href="#">{{ $post->category->name }}</a></p>
