@@ -12,4 +12,4 @@ Route::get('/posts/{category_slug}/{post_slug}', [PostController::class, 'single
 Route::get('/contact', [ContactController::class, 'index'])->name('contacts.index');
 Route::post('/contacts/create_message', [ContactController::class, 'create_message'])->name('contacts.create_message');
 
-Route::get('/upload_data', [UploadDataController::class, 'uploadData'])->name('upload_data');
+Route::post('/upload_data', [UploadDataController::class, 'uploadData'])->name('upload_data');

@@ -8,6 +8,7 @@
                     <button type="button" id="upload-button" class="btn btn-primary">Upload</button>
                 </div>
             </form>
+            <div id="message"></div>
         </div>
     </div>
 </div>
@@ -18,6 +19,7 @@
     $(document).ready(function() {
         $("#upload-button").click(function() {
             var fileInput = $("#choose_xml")[0];
+            var message = $("#message");
             var token =  '{{ csrf_token() }}';
 
             if (fileInput.files.length > 0) {
@@ -25,6 +27,8 @@
                 var formData = new FormData();
                 formData.append("choose_xml", file);
                 formData.append("_token", token);
+
+                message.text("Uploading... ").addClass("text-primary");
 
                 $.ajax({
                     url: "/upload_data",
@@ -35,6 +39,7 @@
                     success: function(response) {
                         // Обработка успешного ответа от сервера
                         console.log(response);
+                        message.text("Success!").addClass("text-success");
                     },
                     error: function(xhr, status, error) {
                         // Обработка ошибки
