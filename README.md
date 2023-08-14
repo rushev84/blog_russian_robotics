@@ -21,15 +21,15 @@ composer install
 ```console
 chmod 777 -R storage
 ```
-### Создайте символическую ссылку на storage:
+#### Создайте символическую ссылку на storage:
 ```console
 php artisan storage:link
 ```
-### Накатите миграции:
+#### Накатите миграции:
 ```console
 php artisan migrate
 ```
-### Создайте пользователя:
+#### Создайте пользователя:
 ```console
 php artisan orchid:admin admin admin@admin.com admin@admin.com
 ```
@@ -45,6 +45,7 @@ http://localhost:8876/admin
 
 ### Загрузка данных
 В разделе "Upload Data" загрузите файл data.xml из корня проекта.
+
 ### Готово!
 Теперь ваш проект готов к просмотру!
 
