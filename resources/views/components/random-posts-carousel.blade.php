@@ -8,8 +8,9 @@
                             <div class="text half-to-full">
                                 <div class="post-meta">
                                     <span class="category">{{ $randomPost->category->name }}</span>
-                                    <span class="mr-2">{{ $randomPost->created_at->format('F d, Y') }}</span> &bullet;
-                                    <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                                    <span class="mr-2">{{ $randomPost->created_at->format('F d, Y') }}</span>
+{{--                                    &bullet;--}}
+{{--                                    <span class="ml-2"><span class="fa fa-comments"></span> 3</span>--}}
                                 </div>
                                 <h3>{{ $randomPost->title }}</h3>
 {{--                                <p>{{ $randomPost->description }}</p>--}}

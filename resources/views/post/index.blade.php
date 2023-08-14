@@ -27,7 +27,7 @@
                                     <div class="post-meta">
                                         <span class="category">{{ $post->category->name }}</span>
                                         <span class="mr-2">{{ $post->created_at->format('F d, Y') }}</span>
-                                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+{{--                                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>--}}
                                     </div>
                                     <h2>{{ $post->title }}</h2>
                                 </div>

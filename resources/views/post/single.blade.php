@@ -11,8 +11,9 @@
                 <h1 class="mb-4">{{ $post->title }}</h1>
                 <div class="post-meta">
                     <span class="category">{{ $post->category->name }}</span>
-                    <span class="mr-2">{{ $post->created_at->format('F d, Y') }} </span> &bullet;
-                    <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
+                    <span class="mr-2">{{ $post->created_at->format('F d, Y') }} </span>
+{{--                    &bullet;--}}
+{{--                    <span class="ml-2"><span class="fa fa-comments"></span> 3</span>--}}
                 </div>
                 <div class="post-content-body">
                     <div class="row mb-5">
