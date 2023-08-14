@@ -5,15 +5,15 @@
 ```console
 git clone git@github.com:rushev84/blog_russian_robotics.git
 ```
-#### Перейдите в папку с проектом и поднимите докер-контейнер:
+#### Перейдите в папку с проектом и поднимите докер-контейнеры:
 ```console
 docker-compose up -d
 ```
-#### Зайдите в контейнер:
+#### Зайдите в контейнер приложения:
 ```console
 docker exec -it blog_russian_robotics_app bash
 ```
-#### Установите Composer:
+#### Установите зависимости:
 ```console
 composer install
 ```
@@ -35,6 +35,11 @@ php artisan orchid:admin admin admin@admin.com admin@admin.com
 ```
 ### Доступ к проекту
 Сайт доступен по адресу: http://localhost:8876/
+
+#### Если вы получаете ошибку 500, то сгенерируйте ключ:
+```console
+php artisan key:generate
+```
 
 ### Административная панель
 Вы можете войти в административную панель по адресу: 
