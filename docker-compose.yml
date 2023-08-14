@@ -5,13 +5,16 @@ services:
     image: nginx:latest
     volumes:
     - ./:/var/www/
-    - ./nginx/conf.d/:/etc/nginx/conf.d/
+    - ./_docker/nginx/conf.d/:/etc/nginx/conf.d/
     ports:
     - "8876:80"
-    container_name: app_nginx
+    container_name: blog_russian_robotics_nginx
     depends_on:
-      - php
-  php:
-    image: php:8.1-fpm
+      - app
+  app:
+    build:
+      context: .
+      dockerfile: _docker/app/Dockerfile
     volumes:
         - ./:/var/www/
+    container_name: blog_russian_robotics_app
