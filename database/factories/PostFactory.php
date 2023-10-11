@@ -15,6 +15,8 @@ class PostFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    // for testing purposes only
     public function definition(): array
     {
         return [
