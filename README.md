@@ -3,7 +3,7 @@
 ### Подготовка и запуск проекта
 #### Перейдите в терминал вашей операционной системы и склонируйте проект на локальный компьютер:
 ```console
-git clone git@github.com:rushev84/blog_russian_robotics.git
+git clone https://github.com/rushev84/blog_russian_robotics.git
 ```
 #### Перейдите в папку с проектом и поднимите докер-контейнеры:
 ```console
